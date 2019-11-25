@@ -1,0 +1,8 @@
+/webpack/webpack-demo/node_modules/
+/webpack/webpack-demo/dist/
+/webpack/webpack-library/node_modules/
+/webpack/webpack-library/dist/
+/webpack/webpack-splitChunk/node_modules/
+/webpack/webpack-splitChunk/dist/
+
+.DS_Store
