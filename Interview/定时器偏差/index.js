@@ -102,3 +102,19 @@ setInterval还有一个回调堆积的问题
 2.setInterval
 原则上来说要使用倒计时之类的需求还是应该使用setInterval因为他更精准，但是如果cb中有大量逻辑操作，并且我们的time很小时，我们就需要小心衡量了，
 如果还是用setInterval就可能会带来time失效的问题，这时就应该使用setTimeOut递归代替setInterval
+
+function sleep(time) {
+    let startTime = window.performance.now();
+    while (window.performance.now() - startTime < time) {}
+  }
+
+let count = 1;
+let getTime = window.performance;
+let startTime = getTime.now();
+
+setInterval(function () {
+  console.log(`第${count}次开始 ${getTime.now() - startTime}`); // 显示开始时间
+  sleep(200); // 程序滞留500ms
+  console.log(`第${count}次结束 ${getTime.now() - startTime}`); // 显示结束时间
+  count += 1;
+}, 300); // 300ms间隔
