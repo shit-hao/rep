@@ -39,10 +39,5 @@ mapLimit(dataLists, 3, (curItem)=>{
     console.log('finish', response)
 });
 
-<<<<<<< HEAD
-//自己的话 
-// mapLimit函数 接受一个列表 limit 和cb
-=======
 //自己的话
 // mapLimit函数 接受一个列表 limit 和cb
->>>>>>> 05e071d6191277607bd91fc81b9237ba37e0fdc4
