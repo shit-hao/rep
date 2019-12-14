@@ -1,0 +1,1 @@
+import 是个promise
