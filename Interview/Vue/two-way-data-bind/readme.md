@@ -1,0 +1,10 @@
+vue2.0使用Object.defineProperty劫持数据时,有些操作数组的方法,比如map,push,shift等会触发数据的变化,是因为在vue源码中做了特殊处理src/core/observer/array.js在此目录下可以看到[
+  'push',
+  'pop',
+  'shift',
+  'unshift',
+  'splice',
+  'sort',
+  'reverse'
+]
+对这些方法做了处理
