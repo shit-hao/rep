@@ -1,3 +1,4 @@
+http://www.alloyteam.com/2012/03/web-cache-2-browser-cache/
 可以从几个方面考虑
 1.网络方面
     1.减少DNS查询时间(尽量使用同一个域名)
