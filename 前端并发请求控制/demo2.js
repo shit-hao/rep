@@ -3,8 +3,8 @@
 //这个应该就是头条说的使用队列的方式 解析下 nice
 function asyncPool(poolLimit, array, iteratorFn) {
     let i = 0;
-    const ret = [];
-    const executing = [];
+    const ret = []; //全部的promise
+    const executing = []; //执行中的promise
     const enqueue = function () {
         // 边界处理，array为空数组
         if (i === array.length) {
