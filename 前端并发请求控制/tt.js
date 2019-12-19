@@ -5,27 +5,34 @@
 // 肯定不是进来一个执行一个 保证2个 不行 要用闭包 r一直是Promise.resolve()
 
 // 思路 每个promise都要执行 但是执行到limit的时候使用Promise.race 包装存起来的list 后续的动作都基于这个链条  好像有点奇怪
+// 这题不会做
 let limit = 2
 let proList = [] //存promise索引
 let executing = [] //正在队列中执行的数组
-let r = Promise.resolve()
+let r = ''
 
 function asyncPool(v, fn) {
-    r.then(()=>{
-        console.log('到我了')
-        let pro = fn(v)
+
+    if (executing.length >= 2) { //下一次执行该函数 执行中的任务大于等于2个的话 就取Promise.race 前2个谁最先执行 然后塞下一个 给搞晕了 和时间没关系 给想复杂了
+        console.log('大于',v)
+        r = Promise.race(executing)
+        r = r.then(() => { //同步的 executing 不变
+            let pro = fn(v) //执行promise 
+            proList.push(pro)
+            let e = pro.then(() => {
+                executing.splice(executing.indexOf(e), 1)
+            })
+            executing.push(e)
+        })
+    } else {
+        console.log('小于',v)
+        let pro = fn(v) //执行promise 一开始 //不超过限制
         proList.push(pro)
         let e = pro.then(() => {
             executing.splice(executing.indexOf(e), 1)
         })
-        executing.push(e);
-        if(executing.length >=2){
-            r = Promise.race(executing)
-        }else{
-            r = e
-        }
-        return r
-    })
+        executing.push(e)
+    }
 }
 const timeout = (i) => {
     return new Promise((res, rej) => {
@@ -34,16 +41,8 @@ const timeout = (i) => {
         }, i)
     })
 }
-
 asyncPool(3000, timeout)
 asyncPool(1000, timeout)
 asyncPool(3000, timeout)
 asyncPool(4000, timeout)
 asyncPool(5000, timeout)
-
-//1秒输出1000 5秒计时中
-//4秒输出3000
-//5秒输出5000
-
-
-

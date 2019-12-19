@@ -37,7 +37,7 @@ const timeout = (i) => {
     })
 }
 
-asyncPool(2, [1000, 1000, 3000,4000,5000], timeout).then(results => {
+asyncPool(2, [4000, 1000, 3000,4000,5000], timeout).then(results => {
     console.log(results)
 });
 //1秒输出1000 (7000计时中)拉下一个
