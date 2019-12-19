@@ -19,7 +19,7 @@ function asyncPool(limit, arr, fn) {
         executing.push(e);
         let r = Promise.resolve()
         if (executing.length >= limit) {
-            r = Promise.race(proList)
+            r = Promise.race(executing)
         }
         return r.then(() => enqueue())
     }
@@ -37,7 +37,7 @@ const timeout = (i) => {
     })
 }
 
-asyncPool(2, [1000, 7000, 2000,4000,6000], timeout).then(results => {
+asyncPool(2, [1000, 1000, 3000,4000,5000], timeout).then(results => {
     console.log(results)
 });
 //1秒输出1000 (7000计时中)拉下一个

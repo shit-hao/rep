@@ -31,7 +31,7 @@ function asyncPool(poolLimit, array, iteratorFn) {
 }
 
 const timeout = i => new Promise(resolve => setTimeout(() => resolve(i), i));
-return asyncPool(2, [1000, 5000, 3000, 2000], timeout).then(results => {
+return asyncPool(2, [1000, 1000, 3000,4000,5000], timeout).then(results => {
     console.log(results)
 });
 
