@@ -7,7 +7,7 @@ class Observer {
 
     }
 }
-// 观察者列表
+// 观察者列表可要可不要
 class ObserverList {
     constructor() {
         this.observerList = []

@@ -3,8 +3,8 @@
 //这个应该就是头条说的使用队列的方式 解析下 nice
 function asyncPool(poolLimit, array, iteratorFn) {
     let i = 0;
-    const ret = [];
-    const executing = [];
+    const ret = []; //全部的promise
+    const executing = []; //执行中的promise
     const enqueue = function () {
         // 边界处理，array为空数组
         if (i === array.length) {
@@ -31,7 +31,7 @@ function asyncPool(poolLimit, array, iteratorFn) {
 }
 
 const timeout = i => new Promise(resolve => setTimeout(() => resolve(i), i));
-return asyncPool(2, [1000, 5000, 3000, 2000], timeout).then(results => {
+return asyncPool(2, [3000, 1000, 3000,4000,5000], timeout).then(results => {
     console.log(results)
 });
 

@@ -4,5 +4,8 @@
 /webpack/webpack-library/dist/
 /webpack/webpack-splitChunk/node_modules/
 /webpack/webpack-splitChunk/dist/
+/*/*/node_modules/
+/readme.md
+/README.md
 
 .DS_Store
