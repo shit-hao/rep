@@ -29,7 +29,68 @@
     2.1 缓存
         缓存分为强缓存和协商缓存
         2.1.1强缓存：
-            
+            主要用户缓存一些不经常改变的静态资源,主要是一些静态资源文件,比如HTML，CSS，JS等，比如百度的首页等等。。
+            可以通过Cache-control和Expire控制(前者优先级更高http1.1)
+            主要由服务端控制
+            强缓存在客户端有两种表现形式：
+                1.from memory cache
+                2.from disk cache
+                图片等媒体文件一般存放在memory cache
+                css,js会根据文件大小的不同选择不同的存储位置
+                尺寸大的浏览器会优先存在disk,小的会放memory
+                隐私模式下的缓存都在memory内
+                也跟内存和硬盘的使用率相关
+            强缓存被服务器的响应头所控制
+        2.1.2 协商缓存
+            1.先说前端能控制的协商缓存
+                1.1 利用webpack的打包的hash构建模式,在生成的静态文件后
+                    hash有3中构建模式
+                        hash:
+                            跟整个项目的构建相关，构建生成的文件hash值都是一样的，只要项目里有文件更改，整个项目构建的hash值都会更改。
+                        chunkhash:
+                            根据不同的入口文件(Entry)进行依赖文件解析、构建对应的chunk，生成对应的hash值。
+                        contenthash:
+                            由文件内容产生的hash值，内容不同产生的contenthash值也不一样。
+            2.服务端的协商缓存方式
+                1.ETag计算 
+                    服务器生成的资源的唯一标示,用来标记资源
+                    If-None-Match： 再次请求服务器时，浏览器的请求报文头部会包含此字段，后面的值为在缓存中获取的标识。服务器接收到次报文后发现If-None-Match则与被请求资源的唯一标识进行对比。
+                        比较结果不同说明资源修改过返回200，并返回新的资源文件
+                        相同返回304
+                2.Last-Modified
+3.Vue
+    Q:你用过哪些组件库,组件库为什么import就能用了
+    A:
+        用Element-ui举例：
+        引入之后使用Vue.use()方法可以调用组件内的install,并且会传入Vue实例作为参数
+        https://cn.vuejs.org/v2/guide/plugins.html#%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6
+        Vue.js 的插件应该暴露一个 install 方法。这个方法的第一个参数是 Vue 构造器，第二个参数是一个可选的选项对象。
+        Install的插件有唯一性,安装之前会检查是否存在，不存在才安装
+        `
+        function initUse (Vue) {
+            Vue.use = function (plugin) {
+                var installedPlugins = (this._installedPlugins || (this._installedPlugins = []));
+                if (installedPlugins.indexOf(plugin) > -1) {
+                return this
+                }
+
+                // additional parameters
+                var args = toArray(arguments, 1);
+                args.unshift(this);
+                if (typeof plugin.install === 'function') {
+                    plugin.install.apply(plugin, args);
+                } else if (typeof plugin === 'function') {
+                    plugin.apply(null, args);
+                }
+                installedPlugins.push(plugin);
+                return this
+            };
+        }
+        `
+        plugin可以是一个对象,也可以是一个方法,Vue做了健壮性处理
+        使用Vue.component(Alert.name, Alert);声明全局组件,局部组件就是我们平常写的组件,使用import导入使用
+
+
 
 
 
