@@ -1,6 +1,19 @@
 Vue 面试题总结
 1.$nextTick原理
-$nextTick其实就是我们所说的宏任务和微任务,只不过Vue把他包装了一层
+A:其实$nextTick就是我们常说的宏任务和微任务，只不过Vue内部把他封装了一层
+Vue会根据浏览器支持的特性来选择执行哪个方法去达到宏任务和微任务，比如会判断Promise，MutationObserver，setImmediate，如果都不支持就会使用常见的setTimeout
+
+2.看过组件库的源码吗,如何实现一个组件呢？
+要实现Vue的插件的话,vue插件应该暴露一个install方法或者对象内有install方法,Vue.use的时候会调用暴露的install并且传入Vue实例和一些自定义参数
+A:组件分两种:
+  1:样式组件
+    我们只需要引入然后使用Vue.component在全局声明这个组件即可->全局声明组件使用Vue.component(Alert.name, Alert),局部声明就是普通的import,并且在组件的compont中声明组件
+  2:手动调用的组件,比如$dialog,$message等
+    这类组件比较特殊，一般是手动调用,而不是主动声明的样式组件,我们需要在Vue的原型上挂载一个方法,这个方法手动的去调用Vue.$mount去挂载组件
+
+
+
+1.1$nextTick其实就是我们所说的宏任务和微任务,只不过Vue把他包装了一层
 具体实现
 Vue在内部维护了一个callbacks队列和一个pending变量(保证任务的唯一性)
 timerFunc()执行
