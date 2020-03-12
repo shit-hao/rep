@@ -1,15 +1,17 @@
 http://www.alloyteam.com/2012/03/web-cache-2-browser-cache/
+https://www.cnblogs.com/xianyulaodi/p/5755079.html
 可以从几个方面考虑
 1.网络方面
     1.减少DNS查询时间(尽量使用同一个域名)
     2.合并HTTP请求(雪碧图,WebScoket,合并JS,CSS文件,减少Cookie体积,或者根据业务场景不携带Cookie等)
     3.合理使用强缓存,协商缓存,CDN缓存等
     4.图片等媒体资源的压缩(GZIP)
+    5.使用CDN
 2.前端代码方面
     1.样式代码放前面,JS代码置后(样式放前面,因为浏览器能让页面看起来加载地更快,他会尽快的展示已渲染完毕的内容)
     2.组件,路由懒加载
-    3.减少监听器,使用事件委托
-    4.精简代码
+    3.减少监听器,使用事件委托,减少DOM操作或者优化DOM操作,使用虚拟DOM
+    4.精简代码(合并JS,CSS)
 4.用户体验方面
     1.加Loading
     2.使用懒加载图片
