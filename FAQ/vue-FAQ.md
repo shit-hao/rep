@@ -1,6 +1,11 @@
 Vue 面试题总结
 1.$nextTick原理
 A:其实$nextTick就是我们常说的宏任务和微任务，只不过Vue内部把他封装了一层
+由于Vue虚拟dom的特性，你改变dom元素之后Vue不会立即将这个变化反映到真实的DOM上，
+
+但是缺点就是 虽然Vue推荐使用数据驱动的方式使用该框架，但是可能有些业务场景需要你去获取dom，这个时候nextTick就派上用场了
+
+nextTick的源码实现其实就是EventLoop
 Vue会根据浏览器支持的特性来选择执行哪个方法去达到宏任务和微任务，比如会判断Promise，MutationObserver，setImmediate，如果都不支持就会使用常见的setTimeout
 
 2.看过组件库的源码吗,如何实现一个组件呢？
