@@ -6,7 +6,6 @@ class PubSub {
         if (!Object.prototype.hasOwnProperty.call(this.subscribers, type)) {
           this.subscribers[type] = [];
         }
-        
         this.subscribers[type].push(fn);
     }
     unsubscribe(type, fn) {
@@ -22,5 +21,6 @@ class PubSub {
 }
 
 let ob = new PubSub();
+ob.subscribe('add', (val) => console.log(val));
 ob.subscribe('add', (val) => console.log(val));
 ob.publish('add', 1);

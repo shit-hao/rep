@@ -4,7 +4,7 @@ class Observer {
 
     }
     update(val) {
-
+        console.log('new Val',val)
     }
 }
 // 观察者列表可要可不要
@@ -39,7 +39,12 @@ class Subject {
     notify(...args) {
         let obCount = this.observers.count();
         for (let index = 0; index < obCount; index++) {
-            this.observers.get(i).update(...args);
+            this.observers.get(index).update(...args);
         }
     }
 }
+
+let sub = new Subject() // 新增目标
+let ob1 = new Observer()
+sub.addObserver(ob1)
+sub.notify([1,2,3])
