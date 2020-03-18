@@ -59,6 +59,7 @@ Function.prototype.myCall = function (context){
 }
 简单的实现就完事了，试一下，没问题，原则就是让这个function成为context上下文的一个对象，使用后删除即可,
 还有一个隐藏的问题fn可能在context上已经声明过了，可以用Symbol解决这个问题，这里不深究
+e.g Object.prototype.toString.call([])
 2. apply
 实现了一个其他的都好说，围绕这this的绑定原理就ok
 Function.prototype.myApply = function(context){
