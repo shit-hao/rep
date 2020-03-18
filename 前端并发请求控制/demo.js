@@ -17,20 +17,19 @@ const mapLimit = (list, limit, asyncHandle) => {
     }
     let asyncList = [];
     let listCopy = [].concat(list); //深拷贝的
-    while (limit--) {//保证3个并发
+    while (limit--) { //保证3个并发
         asyncList.push(recursion())
     }
     return Promise.all(asyncList);
 }
 
-
-var dataLists = [1,2,3,4,5,6,7,8,9,11,100,123];
+var dataLists = [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 100, 123];
 var count = 0;
-mapLimit(dataLists, 3, (curItem)=>{
+mapLimit(dataLists, 3, (curItem) => {
     // console.log('curItem',curItem)
     return new Promise(resolve => {
         count++
-        setTimeout(()=>{
+        setTimeout(() => {
             console.log(curItem, '当前并发量:', count--)
             resolve();
         }, Math.random() * 5000)
