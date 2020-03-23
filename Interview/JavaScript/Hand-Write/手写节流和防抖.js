@@ -46,7 +46,7 @@ function throttle(func, wait) {
             time = setTimeout(() => {
                 func.apply(self, arguments)
                 time = null
-            })
+            }, wait)
         }
     }
 }
