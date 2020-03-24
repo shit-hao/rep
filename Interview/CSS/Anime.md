@@ -1,5 +1,5 @@
 CSS3中translate、transform和translation的区别和联系
-transition: 允许CSS属性值在一定的时间区间内平滑的过渡，
+transition: 过渡 允许CSS属性值在一定的时间区间内平滑的过渡，
             需要事件的触发，例如单击、获取焦点、失去焦点等
             transition:property duration timing-function delay;
                    property:CSS的属性，例如：width height 为none时停止所有的运动，可以为transform

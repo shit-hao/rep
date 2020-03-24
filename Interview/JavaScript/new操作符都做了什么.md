@@ -39,10 +39,10 @@ a = instantiate(A)
 1. 用到了ES6 特性
 2. isPrimitive() 太麻烦了，不是问题的核心，在此就不实现了
 
-function newFunc (name) {
+function newFunc (obj,name) {
     var o = {};
     o.__proto__ = Person.prototype;//绑定Person的原型
-    Person.call(o, name);
+    obj.call(o, name);
     return o;
 }
 
