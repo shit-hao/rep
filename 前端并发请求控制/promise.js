@@ -1,7 +1,7 @@
 const mapLimit = (list, limit, asyncHandle) => {
     const recursion = (arr) => {
         return asyncHandle(arr.shift()).then((res) => {
-            console.log('data', res);
+            // console.log('data', res);
             if (arr.length > 0) {
                 return recursion(arr)
             }
@@ -21,9 +21,9 @@ var dataLists = [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 100, 123];
 var count = 0;
 mapLimit(dataLists, 3, (curItem) => {
     return new Promise(resolve => {
-        count++
+        // count++
         setTimeout(() => {
-            console.log(curItem, '当前并发量:', count--)
+            // console.log(curItem, '当前并发量:', count--)
             resolve();
         }, Math.random() * 5000)
     });
