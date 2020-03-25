@@ -13,7 +13,7 @@ BFC全称叫块级格式化上下文，可以把它理解为一块独立的区�
 
 根元素或其它包含它的元素
 overflow不为visible
-flat不为none
+float不为none
 弹性布局 display:flex
 绝对定位元素 position absolute fixed
 
