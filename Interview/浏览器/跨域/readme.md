@@ -1,11 +1,11 @@
 跨域是浏览器的安全限制
 当2个URL
-域名不同
+域名不同(顶级域名)
 端口不同
 协议不同
 即认为跨域
 
-一般使用CORS或者JSONP处理跨域
+一般使用CORS或者JSONP处理跨域,postMessage(iframe)， nginx转发
 
 http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html
 举例来说，http://www.example.com/dir/page.html这个网址，协议是http://，域名是www.example.com，端口是80（默认端口可以省略）。它的同源情况如下。
