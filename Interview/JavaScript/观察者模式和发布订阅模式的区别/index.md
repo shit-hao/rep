@@ -39,10 +39,6 @@ DownloadTask.prototype.finish = function(url) {
   this.url = url;
   console.log('Task ' + this.id + ' load data from ' + url);
 }
-作者：无邪气
-链接：https://www.zhihu.com/question/23486749/answer/314072549
-来源：知乎
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 function DownloadTaskList() {
   this.downloadTaskList = [];
