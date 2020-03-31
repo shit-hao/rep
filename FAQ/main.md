@@ -95,6 +95,9 @@
         使用Vue.component(Alert.name, Alert);声明全局组件,局部组件就是我们平常写的组件,使用import导入使用
 
 
+        h5 使用pushState兼容webview 
+
+
 
 
 

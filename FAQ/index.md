@@ -64,5 +64,28 @@
             AST语法树
             怎么实现vue-cli
             有没有写过node的上线项目
+    
+    猿辅导视频面试
+        面试内容
+            1.v-slot的用法(看文档),插槽作用域
+            2.vue-router的高级用法(看文档)
+            3.版本更新后页面怎么随之刷新
+            4.vue里的style里的scoped实现
+            5.Promise手写
+            6.Promise里有语法错误 Promise怎么处理
+    上海pdd视频面试
+        面试内容
+            1.判断是否为null
+            2.判断是否是数组
+            3.Vue-router原理
+            4.虚拟dom的优点缺点
+            5.箭头函数和普通函数的区别
+            6.fetch和ajax
+            7.websocket
+            8.axios源码
+            9.手写发布订阅
+            10.Cookie和localStorge满了 还要往里存 下面的 会忽略新进的
+            11.2个题目
+
 
 
