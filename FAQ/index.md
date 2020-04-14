@@ -92,6 +92,8 @@
             2.寄生组合继承
             3.Vue-router原理
             4.继承
+            5.Object.create()
+            6.手写new
 
 
 
