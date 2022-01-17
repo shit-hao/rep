@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .box{
+    width: 300px;
+    height: 300px;
+    /* display: inline-block; */
+    border: 1px solid red;
+  }
+  .box1{
+    position: relative;
+    margin-top: 20px;
+    width: 300px;
+    height: 300px;
+    border-top-width: 1px;
+    /* background-color: black; */
+    /* border: 1px solid red; */
+    /* transform: scaleY(0.5); */
+  }
+  .box1::after{
+    position: absolute;
+    box-sizing: border-box;
+    content: ' ';
+    pointer-events: none;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    border: 1px solid red;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+</style>
+<body>
+  <div class="box"></div>
+  <div class="box1"></div>
+</body>
+</html>

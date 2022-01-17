@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("输出：学习Rea22233ct框架, 深入理解JavaScript")})();

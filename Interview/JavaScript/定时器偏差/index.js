@@ -118,3 +118,62 @@ setInterval(function () {
   console.log(`第${count}次结束 ${getTime.now() - startTime}`); // 显示结束时间
   count += 1;
 }, 300); // 300ms间隔
+
+setTimeout(()=>{
+
+}, 0)
+
+function a(params) {
+  setTimeout(()=>{
+    let map = []
+    a()
+    for (let index = 0; index < 10000000; index++) {
+      map.push(index)
+    }
+    console.log('Date.now()2')
+    console.log(Date.now())
+  }, 200)
+}
+1637920388372 
+1637920388594
+1637920388773
+1637920388999
+
+1637919917341
+1637919918342
+1637919919343
+1637919920348
+
+function a() {
+  console.log('Date.now()1')
+  console.log(Date.now())
+  setInterval(()=>{
+    let map = []
+    for (let index = 0; index < 10000000; index++) {
+      map.push(index)
+    }
+    console.log('Date.now()2')
+    console.log(Date.now())
+  }, 200)
+  console.log('Date.now()3')
+  console.log(Date.now())
+}
+a()
+1637920175073
+
+1637920174739
+1637920174739
+
+1637920175208
+
+1637920174948
+1637920175073
+
+
+1637920430029
+1637920430205
+1637920430456
+1637920430632
+1637920430822
+1637920431117
+1637920431241

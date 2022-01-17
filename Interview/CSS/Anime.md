@@ -1,4 +1,4 @@
-CSS3中translate、transform和translation的区别和联系
+CSS3中transform和translation的区别和联系
 transition: 过渡 允许CSS属性值在一定的时间区间内平滑的过渡，
             需要事件的触发，例如单击、获取焦点、失去焦点等
             transition:property duration timing-function delay;

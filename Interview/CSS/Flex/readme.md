@@ -9,6 +9,8 @@ flex: 2;
 
 /* One value, unitless number: flex-grow */
 /* 1个值, 无单位数字,flex-grow */
+<!-- 一个无单位数(<number>): 
+它会被当作flex:<number> 1 0; <flex-shrink>的值被假定为1，然后<flex-basis> 的值被假定为0 -->
 flex: 2;
 
 /* One value, width/height: flex-basis */

@@ -17,6 +17,10 @@ Array.prototype._reduce = function (fn) {
 }
 
 
+var maxCallback2 = ( acc, cur ) => { 
+    console.log(acc.x, cur.x) 
+    Math.max( acc.x, cur.x )
+};
 Array.prototype._map = function (fn) {
     let arr = this
     let tempArr = []

@@ -2,13 +2,15 @@
 盒子模型分为2种，一种是IE模型，一种是W3C模型。
 
 一般的div盒子的控制项为
-margin - border - padding - content - padding - border - margin
+<!-- margin - border - padding - content - padding - border - margin -->
+什么sb
+content - padding - border - margin
 
 W3C模型 为
 width === content(W3C盒子，也是目前主流的盒子模型)
 
 IE模型 为
-width ===  border + padding + content (IE盒子，又称怪异盒模型)
+width ===  content + padding + border  (IE盒子，又称怪异盒模型)
 
 你可以使用box-sizing去指定你的盒子模型
 

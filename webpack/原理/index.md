@@ -1,0 +1,42 @@
+Webpack可以将其理解是一种基于事件流的编程范例，一个插件合集。基于tapable
+概念：
+Compiler 和 Compilation
+
+https://juejin.cn/post/6844903713312604173#heading-3
+Compiler控制一次完整的webpack周期
+Compilation 是做构建打包的事情
+
+
+Compiler：该对象代表完整的webpack配置，这个对象在webpack启动时生成，拥有此次编译的所有信息，包括option和loader和plugin,当在webpack环境下应用一个新插件时，该插件可以获得Compiler对象的引用，并且通过他可以访问webpack环境
+
+compiler是webpack的入口执行实例，其主要功能是监控代码、启动和终止一个compilation等宏观任务。compilation是具体负责核心编译工作的，主要是模块依赖分析，优化、连接，打包等工作。打个粗略的比方，compiler是人，compilation是人的大脑，架构设计上是类似的。给webpack写plugin的时候，我们需要通过compiler提供的钩子来tap宏观生命周期，其中一个最主要的阶段就是compilation（创建编译对象）的hook，通过该hook，我们拿到编译对象，从而得以进一步tap入实际的编译过程。
+
+
+
+https://cloud.tencent.com/developer/article/1606550
+流程：
+1.合并一些默认参数和命令行参数启动
+2.初始化构建compiler对象，加载了一个NodeEnvironmentPlugin插件，该插件在beforeRun钩子上注册了一个方法用来清除缓存
+3.entryOption钩子一些参数转换，包括使用EntryOptionPlugin对entry转换
+4.实例compiler后会根据options的watch判断是否启动了watch，如果启动watch了就调用compiler.watch来监控构建文件，否则启动compiler.run来构建文件。
+5.NormalModuleFactory,ContextModuleFactory 开始run在这里call beforeRun钩子 在执行run钩子在调用compile函数
+6.compile钩子 函数内先执行beforeCompile钩子 在执行compile钩子，然后实例化Compilation对象
+7.make钩子，addEntry，从Entry开始读取文件，根据文件类型和配置的Loader对文件进行编译，并且进行递归的编译和分析
+8.finishModules钩子，模块构建完成后执行此钩子
+tips：模块构建（Compilation）过程
+a.使用对应的loader进行加载
+b.使用acorn解析生成AST
+c.遍历AST，找出改模块依赖的模块
+9.成功触发succeedModule钩子，失败触发failedModule钩子
+10.seal钩子 这阶段hash的创建以及对内容进行生成，且做了大量的优化，比如tree shaking，最终生成的代码会存放在Compilation的assets属性上
+11.emit钩子 把Assets输出到output的path中。将输出的内容输出到磁盘，创建目录生成文件，文件生成阶段结束
+tips:chunk生成算法
+
+
+webpack流程
+1.从命令行和pk.json合并参数
+2.开始初始化，此时新建一个Compiler对象，并且会加载一些插件，比如nodeencplgin，这个插件在webpack的beforerun钩子上注册了一个函数，用来清理缓存，然后会转换参数，将pk.json的配置加载成webpack内置的基础插件，然后调用一个entryOption钩子，用于解析entry字段
+3.然后执行run方法，这里会判断是否是watch还是run，run方法内执行2个钩子，一个beforerun，一个run，
+4.run钩子执行完成后调用compile函数，此函数内调用两个钩子，beforeCompile和compile并初始化compilation对象，
+5.compilation对象构建完毕，代表开始生成此次的资源版本，然后会调用一个make钩子，make钩子内调用了compilation对象上的addEntry方法，addEntry对entry文件进行AST转换解析，并且遍历引用加到依赖列表内，
+6.构建完成后，调用finishMo钩子，然后调用seal钩子，这个钩子可以做一些tree-内容，然后调用emit钩子，将资源文件输出到output字段路径中

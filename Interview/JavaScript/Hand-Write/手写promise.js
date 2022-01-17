@@ -10,6 +10,7 @@
 
 class Promise {
     constructor(executor) {
+        console.log('cu')
         this.state = 'pending'; // 初始化state为等待态
         this.value = undefined; // 成功的值
         this.reason = undefined; // 失败的原因
@@ -140,3 +141,23 @@ Promise.reject = function(val){
       };
     });
   }
+
+  const promise = new Promise((resolve, reject) => {
+    resolve(100)
+  })
+  const p1 = promise.then(value => {
+    console.log(value)
+    return p1
+  })
+
+
+//   let p = new Promise((res, rej) => {
+//     setTimeout(() => {
+//       console.log('2000')
+//       console.log(2000)
+//       res()
+//     }, 2000)
+//   })
+//   p.then(()=>{
+//       return p
+//   })

@@ -12,3 +12,5 @@ why ？？？难道文档只是建议而已吗？？？
 但是，如果在发布npm包的时候，两种环境安装方式是有很大区别的！！！
 
 所以，在发布npm包的时候，本身dependencies下的模块会作为依赖，一起被下载；devDependencies下面的模块就不会自动下载了；但对于项目而言，npm install 会自动下载devDependencies和dependencies下面的模块。
+
+一年前写的 什么勾吧？

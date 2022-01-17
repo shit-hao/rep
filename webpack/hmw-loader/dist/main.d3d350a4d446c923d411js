@@ -1,0 +1,19 @@
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+var __webpack_exports__ = {};
+
+;// CONCATENATED MODULE: ./src/msg1.js
+const msg1 = '学习Rea22233ct框架'
+;// CONCATENATED MODULE: ./src/msg2.js
+const msg2 = '深入理解JavaScript'
+;// CONCATENATED MODULE: ./src/index.js
+
+
+
+function print() {
+  console.log(`输出：${msg1}, ${msg2}`)
+}
+
+print()
+/******/ })()
+;
