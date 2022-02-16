@@ -19,3 +19,18 @@ https://juejin.im/post/5d045d026fb9a07ec42b58d1
 
 完整地触发组件的生命周期钩子
 触发过渡
+
+如果不使用key，Vue会用一种就地复用的逻辑，但是这样就带来一些问题，比如dom的一些状态，在修改列表时还会存在
+
+为啥会有这样的逻辑，可以看下dom-diff是咋写的
+dom-diff首先会判断是否是sameNode，如果不是就直接替换，如果是会走下面的流程，看下sameNode是怎么判断的
+function sameVnode(oldVnode, newVnode) {
+  return (
+    oldVnode.key === newVnode.key && // key值是否一样
+    oldVnode.tagName === newVnode.tagName && // 标签名是否一样
+    oldVnode.isComment === newVnode.isComment && // 是否都为注释节点
+    isDef(oldVnode.data) === isDef(newVnode.data) && // 是否都定义了data
+    sameInputType(oldVnode, newVnode) // 当标签为input时，type必须是否相同
+  )
+}
+会判断key和tagName,等，所有当我们一个列表key没有发生变化，Vue会认为不需要替换html标签，所以会出现dom的一些状态没有发生变化，只变化了他的属性值，另一个分支的dom-diff,原则上是重新排列你的dom元素

@@ -802,6 +802,8 @@ export function createPatchFunction (backend) {
   }
 }
 
+https://juejin.cn/post/6994959998283907102
+
 新旧虚拟DOM对比的时候，Diff算法比较只会在同层级进行, 不会跨层级比较。 所以Diff算法是:深度优先算法。 时间复杂度:O(n)
 function sameVnode(oldVnode, newVnode) {
   return (

@@ -22,3 +22,15 @@ js解析器将js源码转为抽象语法树 分两步
 Babel原理
 Babel插件就是作用于抽象语法树
 Babel 的三个主要处理步骤分别是：解析（parse），转换（transform），生成（generate）。
+
+用于将Vue的模板转换为render函数
+可以理解为JavaScript语言的最小单元，将es6拆解为AST，然后修改AST在生成es5
+
+词法分析，语法分析
+词法分析，let a = 10，拆解let,a,=,10，
+语法分析，根据词法分析的结果，转成AST
+
+简单手写一个babel，forestpack
+使用@babel/parser解析为AST
+@babel/traverse使用这个库遍历，返回依赖
+transformFromAst，@babel/core 转换AST
