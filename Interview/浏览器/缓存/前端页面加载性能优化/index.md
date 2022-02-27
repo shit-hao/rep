@@ -18,7 +18,7 @@ https://www.cnblogs.com/xianyulaodi/p/5755079.html
     2.使用懒加载图片
 
 
-
+https://segmentfault.com/a/1190000006778717
 ps js加载标签的三种方式
 1.<script src="script.js"></script>
 
@@ -27,11 +27,13 @@ ps js加载标签的三种方式
 
 2.<script async src="script.js"></script>
 
-有 async，加载和渲染后续文档元素的过程将和 script.js 的加载与执行并行进行（异步）。
+当script有async属性时，脚本的加载过程和文档加载也是异步发生的。但脚本下载完成后会停止HTML解析，执行脚本，脚本解析完继续HTML解析。
+
 
 3.<script defer src="myscript.js"></script>
 
-有 defer，加载后续文档元素的过程将和 script.js 的加载并行进行（异步），
+当script中有defer属性时，脚本的加载过程和文档加载是异步发生的，等到文档解析完(DOMContentLoaded事件发生)脚本才开始执行。
+
 但是 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。
 
 window.onload和DOMContentLoaded的区别

@@ -1,0 +1,1 @@
+要实现Vue的插件的话,vue插件应该暴露一个install方法或者对象内有install方法,Vue.use的时候会调用暴露的install并且传入Vue实例和一些自定义参数
