@@ -11,7 +11,7 @@ let proList = [] //存promise索引
 let executing = [] //正在队列中执行的数组
 let r = ''
 
-function asyncPool(v, fn) {
+function asyncPool(v, fn) { 1
 
     if (executing.length >= 2) { //下一次执行该函数 执行中的任务大于等于2个的话 就取Promise.race 前2个谁最先执行 然后塞下一个 给搞晕了 和时间没关系 给想复杂了
         console.log('大于',v)

@@ -1,0 +1,124 @@
+1. A
+2.
+link是标签，@import是css语法
+link顺序加载解析，import在页面解析完成后才会解析
+3.
+html
+<div class="parent">
+    <div class="child"></div>
+</div>
+方法1：绝对定位
+.parent{
+  position:relative;
+}
+.child{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+2: flex
+.parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+4. 2,1
+5. 1,4,3
+6. 
+ 防抖: 一段时间后才执行
+ 节流：一段时间内只能执行一次
+ function debounce(func, wait) {
+    let time
+    let debounced = function () {
+        let context = this
+        if (time) clearTimeout(time)
+        time = setTimeout(
+            () => {
+                func.apply(context, arguments)
+            }, wait)
+    }
+    return debounced
+}
+function throttle(func, wait) {
+    let time
+    return function () {
+        let self = this
+        if (!time) {
+            time = setTimeout(() => {
+                func.apply(self, arguments)
+                time = null
+            }, wait)
+        }
+    }
+}
+7.function test(str){
+  let arr = str.split('-')
+  let newArr = []
+  newArr = arr.map((item,index) => {
+    if(index > 0){
+      let temp = item.slice(1)
+
+      return item[0].toUpperCase() + temp
+    }else{
+      return item
+    }
+  });
+  console.log('newArr')
+  console.log(newArr.join(''))
+}
+
+8.Promise.prototype.all = function(list){
+  let succArr = []
+  let failArr = []
+  while(list.length > 0 && failArr.length === 0){
+    list.unshift()().then(((res)=>{
+      succArr.push(res)
+    })).catch((rej)=>{
+      failArr.push(rej)
+    })
+  }
+  if(failArr.length > 0){
+    return failArr
+  }else{
+    return succArr
+  }
+}
+
+
+9.
+1.Props/$emit
+2.$emit/$on
+3.vuex
+4.持久存储
+5.$attrs/$listeners
+6.provide/inject
+
+10.
+可以从几个方面考虑
+1.网络方面
+    1.减少DNS查询时间(尽量使用同一个域名)
+    2.优化DNS解析，合理使用TTL值以利用DNS缓存，DNS预解析
+    3.合并资源文件
+    4.首页不要加载过大的媒体文件
+    5.合并HTTP请求
+    6.合理使用强缓存,协商缓存,CDN缓存等
+    7.http2
+2.前端代码方面
+    1.样式代码放前面,JS代码置后
+    2.组件懒加载,路由懒加载,图片懒加载
+    3.精简代码(合并JS,CSS)
+    4.使用构建工具例如webpack进行压包，拆包，分包，开启GZIP
+    5.使用MinChunkSizePlugin合并包
+    6.script标签用defer
+    7.注意代码的简洁性，尽量封装代码
+    8.使用import让webpack去tree-shaking
+3.资源方面
+雪碧图
+    1.图片等媒体资源的压缩(GZIP)
+4.用户体验方面
+    1.前端骨架屏
+    2.加Loading
+    3.使用懒加载图片
+

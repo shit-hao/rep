@@ -30,3 +30,31 @@ function a(){
   console.log('333')
   console.log(333)
 }
+
+new Promise((res,rej)=>{
+  rej()
+  res()
+}).then(()=>{
+  console.log('2')
+  console.log(2)
+},()=>{
+  console.log('1')
+  console.log(1)
+})
+
+function test(str){
+  let arr = str.split('-')
+  let newArr = []
+  newArr = arr.map((item,index) => {
+    if(index > 0){
+      let temp = item.slice(1)
+
+      return item[0].toUpperCase() + temp
+    }else{
+      return item
+    }
+  });
+  console.log('newArr')
+  console.log(newArr.join(''))
+}
+
