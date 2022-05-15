@@ -817,6 +817,29 @@ function sameVnode(oldVnode, newVnode) {
 这段 vue 的完整源码涉及的变量比较多，我们只需要了解大致是通过 tag key inputType 来判断的就行。也就是说，
 当 tag key inputType 完全相同时，我们认定节点可复用。Vue 列表 key的作用
 
+
+function patch(oldVnode, newVnode) {
+  // 比较是否为一个类型的节点
+  if (sameVnode(oldVnode, newVnode)) {
+    // 是：继续进行深层比较
+    patchVnode(oldVnode, newVnode)
+  } else {
+    // 否
+    const oldEl = oldVnode.el // 旧虚拟节点的真实DOM节点
+    const parentEle = api.parentNode(oldEl) // 获取父节点
+    createEle(newVnode) // 创建新虚拟节点对应的真实DOM节点
+    if (parentEle !== null) {
+      api.insertBefore(parentEle, vnode.el, api.nextSibling(oEl)) // 将新元素添加进父元素
+      api.removeChild(parentEle, oldVnode.el)  // 移除以前的旧元素节点
+      // 设置null，释放内存
+      oldVnode = null
+    }
+  }
+
+  return newVnode
+}
+
+
 patchVnode方法
 这个函数做了以下事情：
 

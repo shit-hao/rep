@@ -5,7 +5,6 @@ let limit = 3
 let timer = 3000
 let tasking = []
 let tasks = []
-let pro = Promise.resolve
 
 function run(task){
   task().then(()=>{

@@ -1,0 +1,1 @@
+const shuffle = (list) => list.sort((x, y) => Math.random() - 0.5)

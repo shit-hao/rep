@@ -6,44 +6,44 @@
 // await 会把后面的函数包成一个promise 并且执行他 把await后的代码放进then
 
 function resolveAfter2Seconds() {
-    return new Promise((resolve,rej) => {
-      setTimeout(() => {
-        rej('resolved');
-      }, 2000);
-    });
-  }
-  
-  async function asyncCall() {
-    console.log('calling');
-    var result = await resolveAfter2Seconds();
-    console.log(result);
-    console.log(123)
-    // expected output: 'resolved'
-  }
-  
-  asyncCall();
+  return new Promise((resolve, rej) => {
+    setTimeout(() => {
+      rej('resolved');
+    }, 2000);
+  });
+}
 
-  //扩展面试题
+async function asyncCall() {
+  console.log('calling');
+  var result = await resolveAfter2Seconds();
+  console.log(result);
+  console.log(123)
+  // expected output: 'resolved'
+}
 
-  async function async1() {
-    console.log('async1 start')
-    await async2()
-    console.log('async1 end')
+asyncCall();
+
+//扩展面试题
+
+async function async1() {
+  console.log('async1 start')
+  await async2()
+  console.log('async1 end')
 }
 async function async2() {
-    console.log('async2')
+  console.log('async2')
 }
 console.log('script start')
 setTimeout(function () {
-    console.log('setTimeout')
+  console.log('setTimeout')
 }, 0)
 async1();
 new Promise(function (resolve) {
-        console.log('promise1')
-        resolve();
-    }).then(function () {
-        console.log('promise2')
-    })
+  console.log('promise1')
+  resolve();
+}).then(function () {
+  console.log('promise2')
+})
 console.log('script end')
 
 //运行结果
