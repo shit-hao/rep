@@ -1,5 +1,5 @@
-// 快排
-let quickSort = function(arr){
+// 快速排序
+function quickSort(arr){
   if(arr.length <= 1){
     return arr
   }
@@ -10,10 +10,13 @@ let quickSort = function(arr){
   arr.forEach((item)=>{
     if(item > pivot){
       right.push(item)
-    }else {
+    }else{
       left.push(item)
     }
   })
+
   return quickSort(left).concat([pivot], quickSort(right))
 }
+
+console.log('quickSort([-1,0,-2,9,8,99,100,88])')
 console.log(quickSort([-1,0,-2,9,8,99,100,88]))
