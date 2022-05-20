@@ -12,24 +12,22 @@
  * @param {string} s
  * @return {number}
  */
- let lengthOfLongestSubstring = function (s) {
-  let left = 0
-  let right = 0
-  let set = new Set()
-  let length = 0
-  while(right < s.length){
-      if(!set.has(s[right])){
-          set.add(s[right])
-          length = Math.max(length, set.size)
-      }else{ //滑动左边界 并且删除一样的值
-          while(set.has(s[right])){
-              set.delete(s[left++])
-          }
-          set.add(s[right])
-      }
-      right++
-  }
-  console.log('length')
-  console.log(length)
+let lengthOfLongestSubstring = function (s) {
+    let left = 0
+    let right = 0
+    let set = new Set()
+    let length = 0
+    while (right < s.length) {
+        if (!set.has(s[right])) {
+            set.add(s[right])
+            length = Math.max(length, set.size)
+        } else { //滑动左边界 并且删除一样的值
+            while (set.has(s[right])) {
+                set.delete(s[left++])
+            }
+            set.add(s[right])
+        }
+        right++
+    }
 }
 lengthOfLongestSubstring('abcda')

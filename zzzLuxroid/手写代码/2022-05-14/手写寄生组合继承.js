@@ -1,5 +1,5 @@
 function link(child, parent){
-  let agentObj = Object.create(pareng.prototype)
+  let agentObj = Object.create(parent.prototype)
   child.prototype = agentObj
   agentObj.constructor = child
 }

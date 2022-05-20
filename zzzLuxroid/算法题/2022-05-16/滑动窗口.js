@@ -30,4 +30,4 @@ let lengthOfLongestSubstring = function (s) {
   console.log('length')
   console.log(length)
 }
-lengthOfLongestSubstring('abcda')
+lengthOfLongestSubstring('abcdaaac')

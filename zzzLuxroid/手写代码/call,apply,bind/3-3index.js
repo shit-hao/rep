@@ -22,3 +22,17 @@ Function.prototype.myBind = function(fn, ...args){
   }
 }
 
+
+// 函数柯力化
+
+function curry(fn, ...args){
+  let len = fn.length
+  let self = this
+  return function(...innerArgs){
+    if(args.length + innerArgs.length < len){
+      return curry(fn, args.concat(innerArgs))
+    }else{
+      fn.apply(self, args.concat(innerArgs))
+    }
+  }
+}

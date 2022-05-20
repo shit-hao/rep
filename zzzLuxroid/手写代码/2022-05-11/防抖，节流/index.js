@@ -32,9 +32,11 @@ function throttle(fn, wait){
   let timer = null
   return function(...args){
     let self = this
-    setTimeout(()=>{
-      fn.call(self, ...args)
-      timer = null
-    },wait)
+    if(!timer){
+      setTimeout(()=>{
+        fn.call(self, ...args)
+        timer = null
+      },wait)
+    }
   }
 }

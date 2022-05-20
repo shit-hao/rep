@@ -23,3 +23,8 @@ $emit('input', $event.target.value)
 
 然后v-model就能在组件上正常工作了
 
+
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
