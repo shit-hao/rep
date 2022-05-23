@@ -12,8 +12,6 @@
   const counts = new Array(10).fill(0);
   for (const numArr of nums) {
       for (const num of numArr) {
-          console.log('num')
-          console.log(num)
           counts[num]++;
       }
   }

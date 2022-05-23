@@ -3,7 +3,7 @@
 // f(n) = f(n-1) + f(n-2)
 function geta(n){
   if(n <= 1){
-    return 1
+    return n
   }
   return geta(n-1) + geta(n-2)
 }
