@@ -1,5 +1,9 @@
 flex 布局
 
+flex默认值 flex-grow: 0 flex-shrink: 1 flex-basis: auto
+
+order属性定义项目的排列顺序。数值越小（包含负值），排列越靠前，默认为0。
+
 语法
 /* Basic values */
 flex: auto;
