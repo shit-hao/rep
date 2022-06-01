@@ -106,14 +106,3 @@ export default XesJsbridge;
 
 // 由webview注入一个变量WebViewJavascriptBridge 然后在这个变量上注册一个h5 RegisterHandler,通过cb调用 callHandler是invoke调用
 
-{
-  function F() {}
-  F.prototype = o
-  return new F()
-}
-
-function link(child,parent) {
-  let agentObj = Object.create(parent.prototype)
-  agentObj.constructor = child
-  child.prototype = agentObj
-}

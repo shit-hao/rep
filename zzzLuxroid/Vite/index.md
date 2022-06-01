@@ -1,0 +1,1 @@
+https://vitejs.cn/guide/dep-pre-bundling.html
