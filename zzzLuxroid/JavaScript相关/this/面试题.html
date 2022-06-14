@@ -12,15 +12,17 @@
 
 
 <script>
-  var obj = {
-    length: 5,
-    method: function(){
-      console.log('this')
-      console.log(this)
-      fn()
+  
+  function a(){
+    if(this instanceof a){
+      console.log('用了new')
+    }else{
+      console.log('函数调用')
     }
   }
-  obj.method()
+  // a()
+  let A = new a()
+  // A.b()
 </script>
 
 </html>
