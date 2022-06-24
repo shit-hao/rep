@@ -24,10 +24,9 @@ let lengthOfLongestSubstring = function (s) {
       while(set.has(s[right])){
         set.delete(s[left++])
       }
+      set.add(s[right])
     }
     right++
   }
-  console.log('length')
-  console.log(length)
 }
-lengthOfLongestSubstring('abcdaaac')
+lengthOfLongestSubstring('aab')

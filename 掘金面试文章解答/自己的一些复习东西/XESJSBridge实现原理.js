@@ -1,10 +1,10 @@
 const ToString = Object.prototype.toString;
 
-const XesJsbridge = {};
+const Jsbridge = {};
 
 const MessageHandlers = {};
 
-const BridgeName = "viewQuestion teacherP2PH5, startRecord, stopRecordH5, getAudioUrlH5, voiceValueH5, goBackH5, openTakepicture, xesApp_base_setCustomerState, closeWindow, openNativeView, getUserToken, getUserInfo, getUserDeviceInfo, dialog, dialogBox, showShareView, getUserLanguage, scannerImg, getHaveBindCellphone, getHaveBindCellphoneIntent, autoGoBack, openLoginVCOnGuestMode, getGuestMode, setShareImg, setShareContent, cannotGoBack, networkType, Monitor, isNetAvailable, setTitle, tokeninvalid, showLoadingView, showAlert, showToast, getVersion, interactive_oralActivity_recordVideo, interactive_oralActivity_playVideo, openServiceAddressView, moneyChanger_openExchangeMap, openCustomerService,xesApp_business_openTakeMorePictures,xesApp_business_uploadPictures";
+const BridgeName = "viewQuestion teacherP2PH5, startRecord, stopRecordH5, getAudioUrlH5, voiceValueH5, goBackH5, openTakepicture, App_base_setCustomerState, closeWindow, openNativeView, getUserToken, getUserInfo, getUserDeviceInfo, dialog, dialogBox, showShareView, getUserLanguage, scannerImg, getHaveBindCellphone, getHaveBindCellphoneIntent, autoGoBack, openLoginVCOnGuestMode, getGuestMode, setShareImg, setShareContent, cannotGoBack, networkType, Monitor, isNetAvailable, setTitle, tokeninvalid, showLoadingView, showAlert, showToast, getVersion, interactive_oralActivity_recordVideo, interactive_oralActivity_playVideo, openServiceAddressView, moneyChanger_openExchangeMap, openCustomerService,App_business_openTakeMorePictures,App_business_uploadPictures";
 
 // 初始化 注册native回调h5根方法
 const init = function() {
@@ -69,12 +69,12 @@ const callHandler = function(handName=null, param=null, callback=null) {
  * @param {string} handlerName 方法名
  * @param {Function} handler 回调
  */
-const registerHandler = XesJsbridge.registerHandler = function (handlerName, handler) {
+const registerHandler = Jsbridge.registerHandler = function (handlerName, handler) {
   MessageHandlers[handlerName] = handler;
 };
 
 // api调用方法
-const invoke = XesJsbridge.invoke = function (a1="", a2=null, a3=null) {
+const invoke = Jsbridge.invoke = function (a1="", a2=null, a3=null) {
   if (a1 && (typeof a1) === "string" && !!BridgeName.match(a1)) {
     if (a2 && a2 !== null && (ToString.call(a2) === "[object Object]" || ToString.call(a2) === "[object String]") ) {
       callHandler(a1, a2, (res) => {
@@ -94,13 +94,13 @@ const invoke = XesJsbridge.invoke = function (a1="", a2=null, a3=null) {
   console.warn("未找到该方法");
 };
 
-const ready = XesJsbridge.ready = function(fn) {
+const ready = Jsbridge.ready = function(fn) {
   createBridge(fn);
 };
 
 init();
 
-export default XesJsbridge;
+export default Jsbridge;
 //  init -> ready -> createBridge
 
 

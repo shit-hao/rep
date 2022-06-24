@@ -34,9 +34,9 @@ function checkscope(){
 }
 checkscope();
 
-var scope = "global scope";
+let scope = "global scope";
 function checkscope(){
-    var scope = "local scope";
+    let scope = "local scope";
     function f(){
         return scope;
     }

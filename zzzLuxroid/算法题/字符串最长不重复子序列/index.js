@@ -30,4 +30,4 @@ let lengthOfLongestSubstring = function (s) {
         right++
     }
 }
-lengthOfLongestSubstring('abcda')
+lengthOfLongestSubstring('aab')

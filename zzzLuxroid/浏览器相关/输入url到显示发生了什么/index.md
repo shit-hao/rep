@@ -91,5 +91,7 @@ MSL是Maximum Segment Lifetime的英文缩写，可译为“最长报文段寿�
 2.找到后获取Mac地址（ARP协议）
 3.获取到mac地址和ip地址后开始tcp连接，慢启动，丢包重传
 4.服务器响应，获得html后走一个叫关键渲染路径的东西（解析字符串，body，html等解析成令牌（token），然后变成节点，最后组合成dom树，cssOM树类似，最后组合成渲染树，布局，绘制）
-5.渲染层，合成层
+5.浏览器会将各层的信息发送给GPU，GPU会将各层合成（composite），显示在屏幕上
+
+https://juejin.cn/post/6844903782015303693#heading-21
 

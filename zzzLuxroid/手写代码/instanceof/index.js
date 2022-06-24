@@ -9,3 +9,23 @@ Function.prototype.myInstanceOf = function(left,right){
     myInstanceOf(left.__proto__, right)
   }
 }
+
+Function.prototype.myInstanceOf = function(left,right){
+  let l = left.__proto__
+  while(true){
+    if(l === right.prototype){
+      console.log('is')
+      break
+    } else if( l=== null){
+      console.log('no')
+    }
+    l = left.__proto__
+  }
+}
+
+
+function myNew(fn){
+  let obj = {}
+  obj.__proto__ = fn.prototype
+  fn.call(obk)
+}

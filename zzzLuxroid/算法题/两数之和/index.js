@@ -33,5 +33,6 @@ function calc(nums,target) {
   }
 }
 
+
 let a = [2,7,11,15]
 console.log(calc(a, 9))

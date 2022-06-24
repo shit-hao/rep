@@ -39,8 +39,52 @@ var spiralOrder = function (n) {
   console.log(arr)
 };
 
-spiralOrder(5)
+// spiralOrder(5)
 // spiralOrder([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 // [1, 2, 3]
 // [4, 5, 6]
 // [7, 8, 9]
+
+let num = 0
+function getNum(){
+  if(num === 10){
+    num = 0
+    return num++
+  }
+  return num++
+}
+
+function spiralOrder2(n){
+  let top = 0, bottom = n - 1, left = 0, right = n - 1;
+  let arr = new Array(n).fill(0).map((item)=>{
+    return new Array(n).fill(0)
+  })
+  while(true){
+    for (let i = left; i <= right; i++) {
+      arr[top][i] = getNum()
+    }
+    top++
+    if(top > bottom) break
+
+    for (let i = top; i <= bottom; i++) {
+      arr[i][right] = getNum()
+    }
+    right--
+    if(left > right) break
+
+    for (let i = right; i >= 0; i--) {
+      arr[bottom][i] = getNum()
+    }
+    bottom--
+    if(top > bottom) break
+
+    for (let i = bottom; i >= top; i--) {
+      arr[i][left] = getNum()
+    }
+    left++
+    if(left > right) break
+  }
+  console.log('arr')
+  console.log(arr)
+}
+spiralOrder2(5)
