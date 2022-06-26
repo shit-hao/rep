@@ -106,3 +106,7 @@ export default Jsbridge;
 
 // 由webview注入一个变量WebViewJavascriptBridge 然后在这个变量上注册一个h5 RegisterHandler,通过cb调用 callHandler是invoke调用
 
+// 客户端注入一个window上的变量WebViewJavascriptBridge，然后有2个使用场景吧，一个是invoke，一个是注册函数,等native调用
+// 然后invoke的话，就是调用客户端注入的的那个变量上的callHandler传方法名
+// 注册的话就是在registerHandler里的h5RegisterHandler这个只需要调用前端函数，所以客户端那边只需要在特定的业务节点调用h5RegisterHandler
+// 并把和前端协调好的方法名传进去，然后前端自己调用自己的函数用一个对象
