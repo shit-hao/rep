@@ -1,5 +1,15 @@
 JavaScript 语言中类型集合由原始值和对象组成。
 
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures
+
+Function是一种基本数据类型吗
+
+不算。
+
+https://www.zhihu.com/question/24804474
+
+An Object is logically a collection of properties.
+
 基础数据类型
 
 <!-- Number -->

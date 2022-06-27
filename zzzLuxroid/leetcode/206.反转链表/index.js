@@ -23,13 +23,12 @@ var reverseList = function (head) {
   let tempNode = null
   let prevNode = null
 
-  while(curr.next){
+  while(curr){
     tempNode = curr.next
     curr.next = prevNode
 
     prevNode = curr
     curr = tempNode
   }
-  return curr
-
+  return prev
 };
