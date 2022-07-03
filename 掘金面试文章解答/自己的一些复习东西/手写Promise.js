@@ -3,7 +3,7 @@
 const PENDING = 'pending';
 const FULFILLED = 'fulfilled';
 const REJECTED = 'rejected';
-
+// https://segmentfault.com/a/1190000023157856
 // 新建 MyPromise 类
 class MyPromise {
   constructor(executor){
@@ -306,3 +306,17 @@ MyPromise.deferred = function () {
 
 
 module.exports = MyPromise
+
+
+new Promise((res, rej)=>{
+  rej(2)
+}).then((res)=>{
+  console.log('res')
+  console.log(res)
+}).catch((err)=>{
+  console.log('err')
+  console.log(err)
+}).then((res)=>{
+  console.log('res1')
+  console.log(res)
+})

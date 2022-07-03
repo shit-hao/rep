@@ -12,3 +12,25 @@ function curry(fn, ...args){
     }
   }
 }
+
+// toString 覆盖版本
+function add () {
+  let args = [...arguments]
+  let inner = function () {
+    args.push(...arguments)
+    return inner
+  }
+  inner.toString = () => {
+    return args.reduce((pre, cur) => {
+      return pre + cur
+    })
+  }
+  return inner
+}
+
+const res = add(1)(2)(3)(4)(5)
+console.log(res);        // true
+console.log(res.toString());   // 15
+
+
+
