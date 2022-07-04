@@ -2,7 +2,7 @@ Object.fromEntries将二维数组转化为对象
 <script>
     //二维数组
     const result = Object.fromEntries([
-        ['name','葡葡'],
+        ['name','葡葡', '1'],
         ['xueke', 'Java,大数据,前端,云计算']
     ]);
     console.log(result);
