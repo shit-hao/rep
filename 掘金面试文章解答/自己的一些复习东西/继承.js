@@ -1,4 +1,6 @@
 // https://juejin.cn/post/6844903477819211784
+
+// https://www.cnblogs.com/qianxiaox/p/14017183.html
 // 1.原型链继承
 function Parent() {
 	this.name = 'kevin';
