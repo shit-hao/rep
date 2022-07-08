@@ -20,7 +20,7 @@ var findMin = function(nums) {
       return nums[pivotIndex + 1]
     }
     if(nums[pivotIndex] < nums[pivotIndex - 1]){
-      return nums[pivotIndex]
+      return nums[pivotIndex] //最小get
     }
     if(nums[pivotIndex] > nums[left]){ //在右边
       left = pivotIndex + 1

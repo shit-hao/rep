@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+</head>
+<style>
+    .sroll-box {
+        box-sizing: border-box;
+        overflow: auto;
+        border: 1px solid #666;
+    }
+
+    .scroll-item {
+        border-bottom: 1px solid #666;
+        box-sizing: border-box;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <div class="sroll-box" ref="box" @scroll="handleScroll" :style="{height: visibleCount*itemHeight + 'px'}">
+            <div class="scroll-list" :style="{height: list.length * itemHeight + 'px',  transform: `translateY(${fixedScrollTop}px)`}">
+                <div class="scroll-item" v-for="item in visibleData" :style="{height:itemHeight + 'px', 'line-height': itemHeight + 'px'}">
+                    {{item.value}}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            //生成数据
+            let list = []
+            for (var i = 0; i < 500; i++) {
+                list.push({ id: i, value: i + 1 })
+            }
+            return {
+                list, //数据列表
+                itemHeight: 30,//每条记录的高度
+                visibleCount: 10,//可视化区域,渲染个数
+                start: 0, //可视区域,渲染数据开始索引值
+                end: 0,//可视化区域,渲染数据结束索引值
+                visibleData: [], //可视化区域渲染的数据列表
+                fixedScrollTop: 0//偏移高度
+            }
+        },
+        mounted() {
+            // 可视化高度
+            let clientHeight = this.$refs.box.clientHeight
+            //初始化数据
+            this.visibleCount = Math.ceil(clientHeight / this.itemHeight)
+            this.start = 0
+            this.end = this.start + this.visibleCount
+            this.visibleData = this.list.slice(this.start, this.end)
+        },
+        methods: {
+            handleScroll() {
+                const scrollTop = this.$refs.box.scrollTop;//获取 dom 滚动高度
+                const offsetNumber = Math.floor(scrollTop / this.itemHeight); //计算偏移个数
+
+                this.fixedScrollTop = offsetNumber * this.itemHeight; //计算偏移高度
+                //计算开始 结束 数据
+                this.start = offsetNumber;
+                this.end = this.start + this.visibleCount;
+                console.log('')
+                console.log(this.start, this.end)
+                this.visibleData = this.list.slice(this.start, this.end);
+            }
+        }
+    })
+</script>
+
+</html>
