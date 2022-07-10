@@ -46,11 +46,10 @@
 function quick(nums, left = 0, right = nums.length - 1) {
   let temp
   let p1 = left, p2 = right
-  if (left >= right) {
+  if (left > right) {
     return
   }
-  let pivotIndex = Math.floor((left + right) / 2)
-  let pivot = nums[pivotIndex]
+  let pivot = nums[left]
 
   while (p1 < p2) {
     while (nums[p1] < pivot) {
@@ -68,13 +67,11 @@ function quick(nums, left = 0, right = nums.length - 1) {
       p1++
     }
   }
-  quick(nums, left, pivotIndex -1)
-  quick(nums, pivotIndex + 1, right)
-  console.log('nums')
-  console.log(nums)
+  quick(nums, left, p1 -1)
+  quick(nums, p2 + 1, right)
 }
 
-let a = [-2,3,-5]
+let a = [2,0,1]
 console.log(quick(a))
 console.log('a')
 console.log(a)

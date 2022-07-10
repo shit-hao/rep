@@ -60,7 +60,8 @@ function merge(left, right){
 }
 
 
-var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
+// var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
+var arr = [2,0,1]
 console.log(mergeSort(arr));
 
 
