@@ -2,6 +2,7 @@
  * @lc app=leetcode.cn id=121 lang=javascript
  *
  * [121] 买卖股票的最佳时机
+ * https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/solution/mai-mai-gu-piao-wen-ti-by-chen-wei-f-uye0/
  */
 
 // @lc code=start
