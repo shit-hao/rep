@@ -82,3 +82,32 @@ ExecutionContext = {
 变量环境：它同样是一个词法环境，其环境记录器持有变量声明语句在执行上下文中创建的绑定关系。
 
 在 ES6 中，词法环境组件和变量环境的一个不同就是前者被用来存储函数声明和变量（let 和 const）绑定，而后者只用来存储 var 变量绑定。
+
+https://github.com/mqyqingfeng/Blog/issues/8
+
+执行上下文
+
+在《JavaScript深入之执行上下文栈》中讲到，当 JavaScript 代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。
+
+对于每个执行上下文，都有三个重要属性：
+
+变量对象(Variable object，VO)
+作用域链(Scope chain)
+this
+
+var scope = "global scope";
+function checkscope(){
+    var scope = "local scope";
+    function f(){
+        return scope;
+    }
+    return f();
+}
+checkscope();
+
+4.checkscope 函数执行上下文初始化：
+
+复制函数 [[scope]] 属性创建作用域链，
+用 arguments 创建活动对象，
+初始化活动对象，即加入形参、函数声明、变量声明，
+将活动对象压入 checkscope 作用域链顶端。

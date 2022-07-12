@@ -1,4 +1,6 @@
 // 寄生组合继承
+<!-- https://www.cnblogs.com/qianxiaox/p/14017183.html -->
+<!-- https://juejin.cn/post/6844903477819211784 -->
 function link(child, parent) {
   let agentObj = Object.create(parent.prototype)
   agentObj.constructor = child
